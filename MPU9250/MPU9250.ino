@@ -469,8 +469,9 @@ void loop()
     else {      
       // Serial print and/or display at 0.5 s rate independent of data rates
       delt_t = millis() - count;
+      // changed the output freq from 2Hz to 1000/16 = 62Hz
       //if (delt_t > 500) { // update LCD once per half-second independent of read rate      
-      if (delt_t > 500) { // update serial output every 200ms
+      if (delt_t > 62) { // update serial output every 62ms
         if(SerialDebug) {
             Serial.print("ax = "); Serial.print((int)1000*ax);  
             Serial.print(" ay = "); Serial.print((int)1000*ay); 
@@ -524,7 +525,7 @@ void loop()
                 Serial.println((float)m, 6);
                 uint32_t k = millis() - start_time;
                 float angle1 = m  * ((float)k) ;     
-                angle = angle - angle1;           
+                //angle = angle - angle1;           
             }
 
             // AutoX IMU msg format
